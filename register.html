@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register - EEPIS Library</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;700&family=Roboto:wght@300;400;500;700&display=swap');
+
+        * {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 20px;
+        }
+
+        .register-container {
+            background-color: white;
+            border-radius: 15px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            width: 100%;
+            max-width: 450px;
+        }
+
+        .register-header {
+            background: linear-gradient(to right, #000d61, #001bc7);
+            padding: 30px;
+            text-align: center;
+            color: white;
+        }
+
+        .register-header h2 {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        .register-header p {
+            font-size: 14px;
+            opacity: 0.9;
+        }
+
+        .register-form {
+            padding: 30px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: #333;
+            font-size: 14px;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 12px 16px;
+            border: 2px solid #e1e5e9;
+            border-radius: 8px;
+            font-size: 14px;
+            transition: all 0.3s ease;
+            background-color: #f8f9fa;
+        }
+
+        .form-control:focus {
+            border-color: #001bc7;
+            background-color: white;
+            box-shadow: 0 0 0 3px rgba(0, 29, 199, 0.1);
+            outline: none;
+        }
+
+        .register-btn {
+            width: 100%;
+            padding: 14px;
+            background: linear-gradient(to right, #000d61, #001bc7);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 10px;
+        }
+
+        .register-btn:hover {
+            background: linear-gradient(to right, #001bc7, #000d61);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 29, 199, 0.3);
+        }
+
+        .login-link {
+            text-align: center;
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid #e1e5e9;
+        }
+
+        .login-link p {
+            color: #666;
+            font-size: 14px;
+        }
+
+        .login-link a {
+            color: #001bc7;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .login-link a:hover {
+            color: #000d61;
+            text-decoration: underline;
+        }
+
+        @media (max-width: 576px) {
+            body {
+                padding: 15px;
+            }
+
+            .register-container {
+                max-width: 100%;
+            }
+
+            .register-header {
+                padding: 25px 20px;
+            }
+
+            .register-form {
+                padding: 25px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="register-container">
+        <div class="register-header">
+            <h2>EEPIS Library</h2>
+            <p>Buat akun baru</p>
+        </div>
+        <div class="register-form">
+            <form id="registerForm">
+                <div class="form-group">
+                    <label for="name" class="form-label">Nama Lengkap</label>
+                    <input type="text" id="name" class="form-control" placeholder="Masukkan nama lengkap" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="email" class="form-label">Email</label>
+                    <input type="email" id="email" class="form-control" placeholder="Masukkan alamat email" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="password" class="form-label">Password</label>
+                    <input type="password" id="password" class="form-control" placeholder="Masukkan password" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="confirmPassword" class="form-label">Konfirmasi Password</label>
+                    <input type="password" id="confirmPassword" class="form-control" placeholder="Masukkan ulang password" required>
+                </div>
+
+                <button type="submit" class="register-btn">Daftar</button>
+
+                <div class="login-link">
+                    <p>Sudah punya akun? <a href="login.html">Login di sini</a></p>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            console.log('Register page loaded - jQuery ready!');
+
+            $('#registerForm').on('submit', function(e) {
+                e.preventDefault();
+
+                const name = $('#name').val().trim();
+                const email = $('#email').val().trim();
+                const password = $('#password').val();
+                const confirmPassword = $('#confirmPassword').val();
+                
+                console.log('Register attempt:', { name, email, password, confirmPassword });
+
+                if (!name || !email || !password || !confirmPassword) {
+                    alert('Harap isi semua field!');
+                    return;
+                }
+                
+                if (password !== confirmPassword) {
+                    alert('Password tidak cocok!');
+                    return;
+                }
+                
+                if (!email.includes('@')) {
+                    alert('Format email tidak valid!');
+                    return;
+                }
+
+                $('.register-btn').prop('disabled', true).text('Mendaftarkan...');
+
+                setTimeout(() => {
+                    alert('Registrasi berhasil! Silakan login.');
+                    window.location.href = 'login.html';
+                }, 1000);
+            });
+
+            $('#name').focus();
+        });
+    </script>
+</body>
+</html>

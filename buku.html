@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Koleksi Buku - EEPIS Library</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://unpkg.com/boxicons/css/boxicons.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="globaluser.css">
+    <link rel="stylesheet" href="buku.css">
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg px-4">
+        <div class="container-fluid">
+            <a class="navbar-brand fw-bold text-white" href="user.html">EEPIS Library</a>
+            <button class="navbar-toggler border-light" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav mx-auto gap-4">
+                    <li class="nav-item"><a class="nav-link" href="user.html">Menu</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="buku.html">Buku</a></li>
+                    <li class="nav-item"><a class="nav-link" href="pinjam.html">Pinjam</a></li>
+                </ul>
+                <div class="d-flex align-items-center gap-3">
+                    <div class="searchcontainer position-relative">
+                        <input type="text" placeholder="Cari Buku" class="search-input">
+                        <button type="button" class="search-icon-btn" aria-label="Cari">
+                            <i class='bx bx-search search-icon'></i>
+                        </button>
+                    </div>
+                    <div class="dropdown">
+                        <i class='bx bx-user user-icon' id="userProfileDropdown" data-bs-toggle="dropdown" aria-expanded="false"></i>
+                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userProfileDropdown">
+                            <li><a class="dropdown-item" href="profile.html"><i class='bx bx-cog me-2'></i>Pengaturan Profil</a></li>
+                            <li><a class="dropdown-item" href="login.html"><i class='bx bx-log-out me-2'></i>Logout</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <section class="books-grid">
+        <div class="container">
+            <h2 class="section-title">Koleksi Buku</h2>
+            
+            <div class="section-search">
+                <div class="section-search-container">
+                    <input type="text" placeholder="Cari di koleksi ini..." class="section-search-input">
+                    <button class="section-search-btn">
+                        <i class='bx bx-search'></i> Cari
+                    </button>
+                    <div class="dropdown">
+                        <button class="btn-filter dropdown-toggle" type="button" data-bs-toggle="dropdown">
+                            <i class='bx bx-filter'></i> Filter
+                        </button>
+                        <ul class="dropdown-menu dropdown-menu-end">
+                            <li><h6 class="dropdown-header">Kategori</h6></li>
+                            <li><a class="dropdown-item filter-kategori" href="#" data-kategori="">Semua Kategori</a></li>
+                            <li><a class="dropdown-item filter-kategori" href="#" data-kategori="teknologi">Teknologi</a></li>
+                            <li><a class="dropdown-item filter-kategori" href="#" data-kategori="fiksi">Fiksi</a></li>
+                            <li><a class="dropdown-item filter-kategori" href="#" data-kategori="sains">Sains</a></li>
+                            <li><a class="dropdown-item filter-kategori" href="#" data-kategori="sejarah">Sejarah</a></li>
+                            <li><a class="dropdown-item filter-kategori" href="#" data-kategori="manga">Manga</a></li>
+                            <li><a class="dropdown-item filter-kategori" href="#" data-kategori="drama">Drama</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><h6 class="dropdown-header">Status</h6></li>
+                            <li><a class="dropdown-item filter-status" href="#" data-status="tersedia">Tersedia</a></li>
+                            <li><a class="dropdown-item filter-status" href="#" data-status="dipinjam">Dipinjam</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div id="search-results-info" class="mb-4" style="display: none;">
+                <p class="text-muted" id="results-count"></p>
+            </div>
+
+            <div class="row g-4" id="book-list-container">
+            </div>
+
+            <div id="no-results-message" class="text-center py-5" style="display: none;">
+                <i class='bx bx-book-open fs-1 text-muted mb-3'></i>
+                <h4 class="text-muted">Tidak ada buku yang ditemukan</h4>
+                <p class="text-muted">Coba ubah kata kunci pencarian atau filter</p>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="footer-brand">
+                        <h4>EEPIS Library</h4>
+                        <p>Perpustakaan Digital Politeknik Elektronika Negeri Surabaya. Temukan pengetahuan, jelajahi dunia melalui buku.</p>
+                        <div class="social-links">
+                            <a href="#"><i class='bx bxl-facebook'></i></a>
+                            <a href="#"><i class='bx bxl-twitter'></i></a>
+                            <a href="#"><i class='bx bxl-instagram'></i></a>
+                            <a href="#"><i class='bx bxl-youtube'></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-6 mb-4">
+                    <h5>Quick Links</h5>
+                    <ul class="footer-links">
+                        <li><a href="user.html"><i class='bx bx-chevron-right'></i> Home</a></li>
+                        <li><a href="buku.html"><i class='bx bx-chevron-right'></i> Buku</a></li>
+                        <li><a href="pinjam.html"><i class='bx bx-chevron-right'></i> Pinjam</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-2 col-md-6 mb-4">
+                    <h5>Kategori</h5>
+                    <ul class="footer-links">
+                        <li><a href="#"><i class='bx bx-chevron-right'></i> Teknologi</a></li>
+                        <li><a href="#"><i class='bx bx-chevron-right'></i> Fiksi</a></li>
+                        <li><a href="#"><i class='bx bx-chevron-right'></i> Sains</a></li>
+                        <li><a href="#"><i class='bx bx-chevron-right'></i> Sejarah</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <h5>Kontak Kami</h5>
+                    <div class="contact-info">
+                        <div class="contact-item">
+                            <i class='bx bx-map'></i>
+                            <div>
+                                <strong>Alamat</strong>
+                                <p>Jl. Raya ITS, Sukolilo, Surabaya</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <i class='bx bx-phone'></i>
+                            <div>
+                                <strong>Telepon</strong>
+                                <p>(031) 599 9999</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <i class='bx bx-envelope'></i>
+                            <div>
+                                <strong>Email</strong>
+                                <p>library@eepis.ac.id</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <i class='bx bx-time'></i>
+                            <div>
+                                <strong>Jam Operasional</strong>
+                                <p>Senin - Jumat: 08:00 - 20:00</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div class="row">
+                    <div class="col-md-6">
+                        <p>&copy; 2025 EEPIS Library. All rights reserved.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <div class="modal fade" id="bookDetailModal" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="bookDetailTitle">Detail Buku</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <div id="modalLoading" class="modal-loading" style="display: none;">
+                        <i class='bx bx-loader-alt bx-spin'></i>
+                        <p>Memuat detail buku...</p>
+                    </div>
+                    <div id="modalContent">
+                        <div class="row">
+                            <div class="col-md-4 text-center">
+                                <img id="bookDetailCover" src="" alt="Cover Buku" class="img-fluid rounded mb-3 book-detail-cover">
+                                <div class="book-detail-rating mb-3">
+                                    <i class='bx bxs-star text-warning'></i>
+                                    <span id="bookDetailRating">4.5</span>
+                                    <span class="text-muted">/5.0</span>
+                                </div>
+                                <div class="availability-status mb-3">
+                                    <span id="bookAvailability" class="badge bg-success">Tersedia</span>
+                                </div>
+
+                            </div>
+                            <div class="col-md-8">
+                                <div class="book-detail-info">
+                                    <div class="detail-item"><label>Judul Buku</label><p id="bookDetailTitleText" class="detail-value"></p></div>
+                                    <div class="detail-item"><label>Penulis</label><p id="bookDetailAuthor" class="detail-value"></p></div>
+                                    <div class="detail-item"><label>Tahun Terbit</label><p id="bookDetailYear" class="detail-value"></p></div>
+                                    <div class="detail-item"><label>Kategori</label><p id="bookDetailCategory" class="detail-value"></p></div>
+                                    <div class="detail-item"><label>Penerbit</label><p id="bookDetailPublisher" class="detail-value"></p></div>
+                                    <div class="detail-item"><label>ISBN</label><p id="bookDetailISBN" class="detail-value"></p></div>
+                                    <div class="detail-item"><label>Lokasi Rak</label><p id="bookDetailLocation" class="detail-value"></p></div>
+                                    <div class="detail-item">
+                                        <label>Sinopsis</label>
+                                        <div id="bookDetailSynopsis" class="detail-synopsis"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="globaluser.js"></script>
+    <script src="buku.js"></script>
+</body>
+</html>
